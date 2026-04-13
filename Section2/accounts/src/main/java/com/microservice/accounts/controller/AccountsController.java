@@ -20,21 +20,35 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+<<<<<<< HEAD
 @Tag(name = "Curd operation for Bank Account",
         description = "Curd REST API's for BAnk Create, Delete , Fetch and Update account details")
+=======
+@Tag(
+        name = "CRUD REST APIs for Accounts in EazyBank",
+        description = "CRUD REST APIs in EazyBank to CREATE, UPDATE, FETCH AND DELETE account details"
+)
+>>>>>>> a3d5fb4d3340375ae230495aaa16955e19e921bb
 @RestController
-@RequestMapping(path = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path="/api", produces = {MediaType.APPLICATION_JSON_VALUE})
 @Validated
 @AllArgsConstructor
 public class AccountsController {
 
     private IAccountService iAccountService;
 
+<<<<<<< HEAD
     @Operation(summary = " Create Account REST API", description = "it create bank account")
     @ApiResponse(responseCode = "201", description = "HTTP Status Created",
             content = @Content(
                     schema = @Schema(implementation = ErrorResponseDto.class)
             ))
+=======
+    @Operation(summary = "Create Account REST API", description = "REST API to create new Customer &  Account inside EazyBank")
+    @ApiResponses({@ApiResponse(responseCode = "201", description = "HTTP Status CREATED"),
+    @ApiResponse(responseCode = "500", description = "HTTP Status Internal Server Error",
+            content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))})
+>>>>>>> a3d5fb4d3340375ae230495aaa16955e19e921bb
     @PostMapping("/create")
     public ResponseEntity<ResponseDto> createAccount(@Valid @RequestBody CustomerDto customerDto) {
         this.iAccountService.createAccounts(customerDto);
@@ -42,11 +56,18 @@ public class AccountsController {
                 .body(new ResponseDto(AccountsConstants.STATUS_201, AccountsConstants.MESSSAGE_201));
     }
 
+<<<<<<< HEAD
     @Operation(summary = " Get Account REST API", description = "it get the list of bank account")
     @ApiResponse(responseCode = "201", description = "HTTP Status OK",
             content = @Content(
                     schema = @Schema(implementation = ErrorResponseDto.class)
             ))
+=======
+    @Operation(summary = "Fetch Account Details REST API", description = "REST API to fetch Customer &  Account details based on a mobile number")
+    @ApiResponses({@ApiResponse(responseCode = "200", description = "HTTP Status OK"),
+    @ApiResponse(responseCode = "500", description = "HTTP Status Internal Server Error",
+                    content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))})
+>>>>>>> a3d5fb4d3340375ae230495aaa16955e19e921bb
     @GetMapping("/fetch")
     public ResponseEntity<CustomerDto> fetchAccountDetails(
             @RequestParam
@@ -59,6 +80,7 @@ public class AccountsController {
 
     }
 
+<<<<<<< HEAD
     @Operation(
             summary = "Update Account Details REST API",
             description = "REST API to update Customer &  Account details based on a account number"
@@ -81,6 +103,13 @@ public class AccountsController {
             )
     }
     )
+=======
+    @Operation(summary = "Update Account Details REST API", description = "REST API to update Customer &  Account details based on a account number")
+    @ApiResponses({@ApiResponse(responseCode = "200", description = "HTTP Status OK"),
+    @ApiResponse(responseCode = "417", description = "Expectation Failed"),
+    @ApiResponse(responseCode = "500", description = "HTTP Status Internal Server Error",
+                 content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))})
+>>>>>>> a3d5fb4d3340375ae230495aaa16955e19e921bb
     @PutMapping("update")
     public ResponseEntity<ResponseDto> updateAccountDetails(@Valid @RequestBody CustomerDto customerDto) {
         boolean isUpdated = iAccountService.updateAccounts(customerDto);
@@ -95,6 +124,7 @@ public class AccountsController {
         }
     }
 
+<<<<<<< HEAD
     @Operation(
             summary = "Delete Account & Customer Details REST API",
             description = "REST API to delete Customer &  Account details based on a mobile number"
@@ -117,6 +147,13 @@ public class AccountsController {
             )
     }
     )
+=======
+    @Operation(summary = "Delete Account & Customer Details REST API", description = "REST API to delete Customer &  Account details based on a mobile number")
+    @ApiResponses({@ApiResponse(responseCode = "200", description = "HTTP Status OK"),
+    @ApiResponse(responseCode = "417", description = "Expectation Failed"),
+    @ApiResponse(responseCode = "500", description = "HTTP Status Internal Server Error",
+                    content = @Content(schema = @Schema(implementation = ErrorResponseDto.class)))})
+>>>>>>> a3d5fb4d3340375ae230495aaa16955e19e921bb
     @DeleteMapping("delete")
     public ResponseEntity<ResponseDto> deleteAccountDetails(
             @RequestParam
