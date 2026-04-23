@@ -1,6 +1,5 @@
 package com.microservice.card.audit;
 
-import org.aspectj.apache.bcel.classfile.Module;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
 
