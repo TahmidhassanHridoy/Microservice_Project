@@ -1,4 +1,4 @@
-package com.microservice.loans;
+package com.microservices.loans;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
