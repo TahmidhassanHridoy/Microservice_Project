@@ -86,5 +86,5 @@ public class LoansServiceImpl implements ILoansService {
         loansRepository.deleteById(loans.getLoanId());
         return true;
     }
-
+ 
 }
